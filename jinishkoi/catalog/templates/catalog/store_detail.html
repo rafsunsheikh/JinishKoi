@@ -1,0 +1,20 @@
+
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<h1>Store: {{ store }} </h1>
+<p>{{store.date_of_last_maintainance}} - {% if store.date_of_next_maintainance %}{{store.date_of_next_maintainance}}{% endif %}</p>
+
+<div style="margin-left:20px;margin-top:20px">
+<h4>Equipments</h4>
+
+<dl>
+{% for equipment in store.equipment_set.all %}
+  <dt><a href="{% url 'equipment-detail' equipment.pk %}">{{equipment}}</a> ({{equipment.equipmentinstance_set.all.count}})</dt>
+  <dd>{{equipment.summary}}</dd>
+{% endfor %}
+</dl>
+
+</div>
+{% endblock %}

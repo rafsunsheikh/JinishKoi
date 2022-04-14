@@ -1,0 +1,26 @@
+
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<h1>Store List</h1>
+
+{% if store_list %}
+  <ul>
+
+  {% for store in store_list %}
+    <li>
+      <a href="{{ store.get_absolute_url }}">
+      {{ store }} ({{store.date_of_last_maintainance}} - {% if store.date_of_next_maintainance %}{{store.date_of_next_maintainance}}{% endif %})
+      </a>
+    </li>
+  {% endfor %}
+
+ </ul>
+{% else %}
+  <p>There are no stores available.</p>
+{% endif %}
+        
+        
+        
+{% endblock %}

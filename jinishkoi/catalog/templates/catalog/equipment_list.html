@@ -1,0 +1,16 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Equipments List</h1>
+  {% if equipment_list %}
+  <ul>
+    {% for equipment in equipment_list %}
+      <li>
+        <a href="{{ equipment.get_absolute_url }}">{{ equipment.title }}</a> ({{equipment.store}})
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no equipments in the stores.</p>
+  {% endif %}
+{% endblock %}

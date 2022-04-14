@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Borrowed equipments</h1>
+
+    {% if equipmentinstance_list %}
+    <ul>
+
+      {% for equipmentinst in equipmentinstance_list %}
+      <li class="{% if equipmentinst.is_overdue %}text-danger{% endif %}">
+        <a href="{% url 'equipment-detail' equipmentinst.equipment.pk %}">{{equipmentinst.equipment.title}}</a> ({{ equipmentinst.due_back }})
+      </li>
+      {% endfor %}
+    </ul>
+
+    {% else %}
+      <p>There are no equipments borrowed.</p>
+    {% endif %}
+{% endblock %}
